@@ -108,8 +108,8 @@ daddi r3, r0, 1   # r3, flag = 1
 # break
 
 pLoop:
-    lbu r4, palindromeArray(r1)  # r4, value1 = array[i]
-    lbu r5, palindromeArray(r2)  # r5, value2 = array[j]
+    lb r4, palindromeArray(r1)  # r4, value1 = array[i]
+    lb r5, palindromeArray(r2)  # r5, value2 = array[j]
 
     bne r4, r5, pSetFalse      # if value1 != value2, set to false
 
