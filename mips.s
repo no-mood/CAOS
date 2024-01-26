@@ -48,9 +48,8 @@ loop:
     lb r3, arrayC(r0)   # r3, min = c[0]
     dadd r4, r3, r0     # r4, max = min
 
-    daddi r1, r0, 1     # r1, i = 1
-
 # Loop to find the minimum and maximum
+    daddi r1, r0, 1     # r1, i = 1
 findLoop:
     lb r5, arrayC(r1)  # r5, value = c[i], Load a byte from arrayC into r5
 
