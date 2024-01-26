@@ -29,8 +29,8 @@ halt
 ### arrayC[i] = arrayA[i] + arrayB[i]
 ### search for max and min
 ArraySumMinMax:
-    dadd r1, r0, r0 # r1 = 0
-    daddi r2, r0, 10 # N = 10
+    dadd r1, r0, r0 # r1: i = 0
+    daddi r2, r0, 10 # r2: N = 10
 
 loop:
     lb r3, arrayA(r1)  # Load a byte from arrayA into r3
@@ -42,39 +42,34 @@ loop:
     bne r1, r2, loop  # Branch to loop if i != N
 
 # Find the minimum and maximum values in the vector arrayC
-# Initialize variables:
-    dadd r1, r0, r0     # r1 = 0# vector index
-    daddi r2, r2, -1    #r2 = counter, N-1
-    dadd r3, r0, r0     # r3 = 0# tempMin
-    dadd r4, r0, r0     # r4 = 0# tempMax
-    
+
+   
     # Load the first element into r3 and assume it is the minimum and maximum
-    lb r3, arrayC(r1)
-    dadd r4, r3, r0
+    lb r3, arrayC(r0)   # r3, min = c[0]
+    dadd r4, r3, r0     # r4, max = min
+
+    daddi r1, r0, 1     # r1, i = 1
 
 # Loop to find the minimum and maximum
 findLoop:
-    daddi r1, r1, 1  # Increment the index
-    lb r5, arrayC(r1)  # Load a byte from arrayC into r5
+    lb r5, arrayC(r1)  # r5, value = c[i], Load a byte from arrayC into r5
 
 # Check for minimum:
 checkMin:
-    dadd r6, r0, r0  # Flag register
-    slt r6, r5, r3    # Compare r5 and r3 to check if r5 is less than r3
+    slt r6, r5, r3    # if value < min
     beqz r6, checkMax # If r6 remains 0, r3 is the minimum, and we proceed to checkMax
     dadd r3, r5, r0  # Otherwise, r3 takes the value of r5
 
 # Check for maximum:
 checkMax:
-    dadd r6, r0, r0  # Flag register
-    slt r6, r4, r5    # Compare r4 and r5 to check if r5 is less than r4
-    beqz r6, checkCounter
+    slt r6, r4, r5    # if max < value
+    beqz r6, checkCounter # Compare r4 and r5 to check if r5 is less than r4
     dadd r4, r5, r0  # r4 takes the value of r5 if r5 is greater
 
 # Continue the loop:
 checkCounter:
-    daddi r2, r2, -1  # Decrement the loop count
-    bnez r2, findLoop  # Branch to findLoop if the loop count is not zero
+    daddi r1, r1, 1 # i++
+    bne r1, r2, findLoop  # branch to loop if i != N
 
 # Store the minimum and maximum values:
     sb r3, minVal(r0) # Store the minVal
