@@ -116,8 +116,8 @@ pLoop:
     daddi r1, r1, 1           # i++
     daddi r2, r2, -1          # N--
     bne r1, r2, pLoop 
-
 j pExit
+
 pSetFalse:
 dadd r3, r0, r0 # flag = 0
 
