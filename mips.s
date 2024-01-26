@@ -103,7 +103,7 @@ daddi r2, r0, 8    # r2, j = N-1
 daddi r3, r0, 1   # r3, flag = 1 
 
 # flag = 1
-# for i = 0; i < N/2; i++
+# for( i = 0, j = N-1; i != j; i++, j-- )
 # if array[i] == array[N-1]; flag = 0
 # break
 
