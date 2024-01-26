@@ -43,7 +43,6 @@ loop:
 
 # Find the minimum and maximum values in the vector arrayC
 
-   
     # Load the first element into r3 and assume it is the minimum and maximum
     lb r3, arrayC(r0)   # r3, min = c[0]
     dadd r4, r3, r0     # r4, max = min
