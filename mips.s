@@ -14,8 +14,15 @@ arrayC:
 minVal: .byte 0
 maxVal: .byte 0
 
+
 palindromeArray:
 .byte 2,6,-3,11,9,11,-3,6,2
+
+flag:
+.byte 0 # Initialize an 8-bit unsigned variable flag, initially set to 0
+
+
+
 
 
 .text ## Code segment
@@ -115,6 +122,7 @@ pSetFalse:
 dadd r3, r0, r0 # flag = 0
 
 pExit:
+sb r3, flag(r0) # store the flag
 
 jr $ra
 
