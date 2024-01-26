@@ -125,6 +125,7 @@ pExit:
 sb r3, flag(r0) # store the flag
 
 jr $ra
+### End Exercise 1.2
 
 
 
