@@ -4,18 +4,27 @@
 
 arrayA:
 .byte 1,2,3,4,5,6,7,8,9,10
+
 arrayB:
 .byte 1,2,3,4,5,6,7,8,9,10
+
 arrayC:
 .space 10 # saving 3 Bytes
+
 minVal: .byte 0
 maxVal: .byte 0
+
+palindromeArray:
+.byte 2,6,-3,11,9,11,-3,6,2
+
 
 .text ## Code segment
 
 Main: ## This is a label, Main label is not mandatory
 
-jal ArraySumMinMax
+#jal ArraySumMinMax
+
+jal PalindromeSequence
 
 halt
 
@@ -76,6 +85,38 @@ checkCounter:
 jr $ra 
 ### End Exercise 1.1
 
+
+
+### Exercise 1.2 
+### check if the content of a N=9 8-bit array corresponds to a palindrome sequence
+### If it does, use an 8-bit unsigned variable (flag) to store the result
+PalindromeSequence:
+daddi r1, r0, 0    # r1, i = 0
+daddi r2, r0, 8    # r2, j = N-1
+daddi r3, r0, 1   # r3, flag = 1 
+
+# flag = 1
+# for i = 0; i < N/2; i++
+# if array[i] == array[N-1]; flag = 0
+# break
+
+pLoop:
+    lbu r4, palindromeArray(r1)  # r4, value1 = array[i]
+    lbu r5, palindromeArray(r2)  # r5, value2 = array[j]
+
+    bne r4, r5, pSetFalse      # if value1 != value2, set to false
+
+    daddi r1, r1, 1           # i++
+    daddi r2, r2, -1          # N--
+    bne r1, r2, pLoop 
+    j pExit
+
+pSetFalse:
+dadd r3, r0, r0 # flag = 0
+
+pExit:
+
+jr $ra
 
 
 

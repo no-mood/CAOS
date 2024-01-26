@@ -48,6 +48,9 @@ Register: 64 bit
   - `lui` : load upper half of register immediate
   - `slt` : set less than
   - `dsll` : (Double) shift left logical
+  - `srl` ?: shift right logical
+  - `sra` ?: shift right arithmetic
+
 
 - ### Branches and Jumps
 
