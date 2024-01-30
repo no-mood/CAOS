@@ -157,8 +157,8 @@ ori r1, r0, 0 # r1, i = 0
 ori r2, r0, 9 # r2, N = 9
 
 l.d f0, zero_fp(r0) # f0, f-p zero
-# Since 'i' cannot be used as both an array index and the loop counter (as it needs to move by 8B instead of 1B), 'N' is used as the loop counter.
-daddi r2, r2, -1 # N--, da 8 a 0 -> 9 iterations
+# Since 'i' cannot be used as both an array index and the loop counter (as it needs to move by 8B instead of 1B), 
+# 'N' is used as the loop counter -> [9, 1] = 9 iterations.
 fLoop: 
     add.d f3, f1, f2     # f5, c = a + b
     s.d f3, f_array(r1)  # f_array[ i ] = c
