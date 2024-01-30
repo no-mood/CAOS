@@ -17,7 +17,15 @@ Register: 64 bit
 - `.word` : 64-bits
 - `.word16` : 16-bits
 - `.word32` : 32-bits
-- `.double` : floating-point number
+- `.double` : floating-point number, stored 64 bits
+
+## Registers
+- `r0, ..., r31` : General-purpose Integer Registers
+  - `r0` is always 0 (zero)
+- `f0, ..., f31` : Floating-point register
+  - `f0` could be used as zero in floating point, with  
+  `zero_fp : .double 0.0` 
+
 
 ## Instruction Set
 
