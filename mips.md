@@ -15,8 +15,8 @@ Register: 64 bit
 - `.align <n>` : align to n-byte boundary
 - `.byte` : byte
 - `.word` : 64-bits
-- `.word16` : 64-bits
-- `.word32` : 64-bits
+- `.word16` : 16-bits
+- `.word32` : 32-bits
 - `.double` : floating-point number
 
 ## Instruction Set
