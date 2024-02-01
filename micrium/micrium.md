@@ -10,10 +10,9 @@ static  CPU_STK_SIZE  START_TSK_STACK[START_TASK_STK_SIZE];;
 
 /* Task functions */
 static void StartTask ( void   *p_arg );
-
 ```
 
-main()
+## main()
 ```
 OSTaskCreate(
 				(OS_TCB     *)&START_TSK_TCB,               /* Create the start task                                */
@@ -90,6 +89,4 @@ static  void  StartTask(void *p_arg)
     OSSchedRoundRobinCfg(DEF_ENABLE, 10, &err); 
 
 }
-
-
 ```
